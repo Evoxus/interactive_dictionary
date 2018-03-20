@@ -1,5 +1,5 @@
 import json
-import difflib
+
 from difflib import get_close_matches
 
 still_searching = True

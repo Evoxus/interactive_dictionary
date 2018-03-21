@@ -20,6 +20,8 @@ def user_input():
             try:
                 if word == get_close_matches(word, data.keys(), n=1)[0]:
                     break
+                elif word.upper() in data:
+                    word = word.upper()
                 elif word.title() in data:
                     word = word.title()
                     break

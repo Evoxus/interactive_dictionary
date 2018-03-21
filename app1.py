@@ -4,10 +4,10 @@ from difflib import get_close_matches
 
 still_searching = True
 
-data = json.load(open(r"c:\Users\mp_pr\OneDrive\Desktop\Coding\Python\python_megacourse\data.json", "r"))
+data = json.load(open(r"data.json", "r"))
 
 def get_definition(word):
-    return ' '.join(data[word])
+    return '\n'.join(data[word])
 
 word = ''
 yeses = ('y', 'yes', 'yeah')
@@ -19,6 +19,9 @@ def user_input():
             word = input('Enter a word you\'d like the definition for: ').lower()
             try:
                 if word == get_close_matches(word, data.keys(), n=1)[0]:
+                    break
+                elif word.title() in data:
+                    word = word.title()
                     break
                 elif get_close_matches(word, data.keys(), n=1)[0] != word:
                     check = input("Did you mean {0}? (Y/N) ".format(' '.join(get_close_matches(word, data.keys(), n=1))))
